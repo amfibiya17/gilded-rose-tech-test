@@ -1,0 +1,33 @@
+# Gilded Rose
+
+![](https://img.shields.io/badge/Coverage-56%25-F2E96B.svg?prefix=$coverage$)
+
+This is the Gilded Rose kata in JavaScript with Jest
+
+## Getting started
+
+Install dependencies
+
+```sh
+npm install
+```
+
+## Running tests
+
+To run all tests
+
+```sh
+npm test
+```
+
+To run all tests in watch mode
+
+```sh
+npm run test:watch
+```
+
+To generate test coverage report
+
+```sh
+npm run test:coverage
+```
