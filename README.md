@@ -1,7 +1,5 @@
 # Gilded Rose
 
-![](https://img.shields.io/badge/Coverage-56%25-F2E96B.svg?prefix=$coverage$)
-
 This is the Gilded Rose kata in JavaScript with Jest
 
 ## Getting started

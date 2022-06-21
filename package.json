@@ -1,11 +1,5 @@
 {
   "name": "gilded-rose-kata",
-
-  "jest": {
-    "coverageReporters": [
-      "json-summary"
-    ]
-  },
   "version": "1.0.0",
   "description": "Gilded Rose kata in JavaScript with Jest",
   "main": "index.js",
