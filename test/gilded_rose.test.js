@@ -31,11 +31,18 @@ describe('Gilded Rose', () => {
     let shop;
 
     beforeEach(() => {
-      shop = new Shop(['banana']);
+      shop = new Shop([new Item('banana', 1, 0)]);
     });
 
     it('has items instance property after initializing the class', () => {
-      expect(shop.items).toEqual(['banana']);
+      expect(shop.items).toEqual([new Item('banana', 1, 0)]);
+    });
+
+    describe('updateQuality function', () => {
+      it('should not have negative quality', () => {
+        shop.updateQuality();
+        expect(shop.items[0].quality).toBeGreaterThanOrEqual(0);
+      });
     });
   });
 });
