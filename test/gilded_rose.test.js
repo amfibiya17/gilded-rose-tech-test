@@ -29,32 +29,44 @@ describe('Gilded Rose', () => {
 
   describe('class Shop', () => {
     it('has items instance property after initializing the class', () => {
-      const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+      const gildedRose = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
 
-      expect(shop.items).toEqual([new Item('banana', 5, 5)]);
+      expect(gildedRose.items).toEqual([new Item('banana', 5, 5)]);
     });
 
     describe('updateQuality with quality limitation', () => {
       it('should not have negative quality', () => {
-        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 0 }]);
+        const gildedRose = new Shop([
+          { name: 'banana', sellIn: 5, quality: 0 },
+        ]);
 
-        shop.updateQuality();
-        expect(shop.items[0].quality).toBeGreaterThanOrEqual(0);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(0);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(0);
       });
 
       it('should not have quality greater than 50', () => {
-        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 50 }]);
-        shop.updateQuality();
+        const gildedRose = new Shop([
+          { name: 'banana', sellIn: 5, quality: 49 },
+        ]);
 
-        expect(shop.items[0].quality).toBeLessThanOrEqual(50);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toBeLessThanOrEqual(50);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toBeLessThanOrEqual(50);
       });
     });
 
     describe('updateQuality with standard items', () => {
       it('should have an item in the shop', () => {
-        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+        const gildedRose = new Shop([
+          { name: 'banana', sellIn: 5, quality: 5 },
+        ]);
 
-        expect(shop.items[0]).toEqual({
+        expect(gildedRose.items[0]).toEqual({
           name: 'banana',
           sellIn: 5,
           quality: 5,
@@ -62,60 +74,105 @@ describe('Gilded Rose', () => {
       });
 
       it('should update quality decreasing by 1', () => {
-        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+        const gildedRose = new Shop([
+          { name: 'banana', sellIn: 5, quality: 5 },
+        ]);
 
-        shop.updateQuality();
-        expect(shop.items[0].quality).toEqual(4);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(4);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(3);
       });
 
       it('should update sellIn decreasing by 1', () => {
-        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+        const gildedRose = new Shop([
+          { name: 'banana', sellIn: 5, quality: 5 },
+        ]);
 
-        shop.updateQuality();
-        expect(shop.items[0].sellIn).toEqual(4);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(4);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(3);
       });
 
       it('should update quality decreasing by two if sellIn = 0', () => {
-        const shop = new Shop([{ name: 'banana', sellIn: 0, quality: 5 }]);
-        shop.updateQuality();
+        const gildedRose = new Shop([
+          { name: 'banana', sellIn: 0, quality: 5 },
+        ]);
 
-        expect(shop.items[0].quality).toEqual(3);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(3);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(1);
       });
     });
 
     describe('Sulfuras, Hand of Ragnaros', () => {
       it('should not update quality', () => {
-        const shop = new Shop([
+        const gildedRose = new Shop([
           { name: 'Sulfuras, Hand of Ragnaros', sellIn: 0, quality: 80 },
         ]);
-        shop.updateQuality();
 
-        expect(shop.items[0].quality).toEqual(80);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(80);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(80);
       });
 
       it('should not update sellIn', () => {
-        const shop = new Shop([
+        const gildedRose = new Shop([
           { name: 'Sulfuras, Hand of Ragnaros', sellIn: 0, quality: 80 },
         ]);
-        shop.updateQuality();
 
-        expect(shop.items[0].sellIn).toEqual(0);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(0);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(0);
       });
     });
 
     describe('Aged Brie', () => {
       it('should update quality increasing by 1', () => {
-        const shop = new Shop([{ name: 'Aged Brie', sellIn: 2, quality: 0 }]);
-        shop.updateQuality();
+        const gildedRose = new Shop([
+          { name: 'Aged Brie', sellIn: 2, quality: 0 },
+        ]);
 
-        expect(shop.items[0].quality).toEqual(1);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(1);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(2);
       });
 
       it('should update sellIn decreasing by 1', () => {
-        const shop = new Shop([{ name: 'Aged Brie', sellIn: 2, quality: 0 }]);
-        shop.updateQuality();
+        const gildedRose = new Shop([
+          { name: 'Aged Brie', sellIn: 2, quality: 0 },
+        ]);
 
-        expect(shop.items[0].sellIn).toEqual(1);
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(1);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(0);
+      });
+
+      it('should update quality increasing by 2 and decreasing sellIn by 1 for each day that passes beyond the `sellIn` day', () => {
+        const gildedRose = new Shop([
+          { name: 'Aged Brie', sellIn: 1, quality: 1 },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(0);
+        expect(gildedRose.items[0].quality).toEqual(2);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(-1);
+        expect(gildedRose.items[0].quality).toEqual(4);
       });
     });
   });
