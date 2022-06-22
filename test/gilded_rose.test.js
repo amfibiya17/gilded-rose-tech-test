@@ -21,5 +21,9 @@ describe('Gilded Rose', () => {
     it('has a sellIn instance property after initializing the class', () => {
       expect(item.sellIn).toEqual(1);
     });
+
+    it('has a quality instance property after initializing the class', () => {
+      expect(item.quality).toEqual(0);
+    });
   });
 });
