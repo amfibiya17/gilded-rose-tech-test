@@ -29,37 +29,31 @@ describe('Gilded Rose', () => {
 
   describe('class Shop', () => {
     it('has items instance property after initializing the class', () => {
-      const item = { name: 'banana', sellIn: 5, quality: 5 };
-      const shop = new Shop([item]);
+      const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+
       expect(shop.items).toEqual([new Item('banana', 5, 5)]);
     });
 
     describe('updateQuality with quality limitation', () => {
       it('should not have negative quality', () => {
-        const item = { name: 'banana', sellIn: 5, quality: 5 };
-        const shop = new Shop([item]);
+        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 0 }]);
+
         shop.updateQuality();
         expect(shop.items[0].quality).toBeGreaterThanOrEqual(0);
       });
 
       it('should not have quality greater than 50', () => {
-        const item = { name: 'banana', sellIn: 5, quality: 5 };
-        const shop = new Shop([item]);
+        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 50 }]);
         shop.updateQuality();
+
         expect(shop.items[0].quality).toBeLessThanOrEqual(50);
       });
     });
 
     describe('updateQuality with standard items', () => {
-      let item;
-      let shop;
-
-      beforeEach(() => {
-        item = { name: 'banana', sellIn: 5, quality: 5 };
-        shop = new Shop([item]);
-      });
-
       it('should have an item in the shop', () => {
+        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+
         expect(shop.items[0]).toEqual({
           name: 'banana',
           sellIn: 5,
@@ -68,8 +62,24 @@ describe('Gilded Rose', () => {
       });
 
       it('should update quality decreasing by one', () => {
+        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+
         shop.updateQuality();
         expect(shop.items[0].quality).toEqual(4);
+      });
+
+      it('should update sellIn decreasing by one', () => {
+        const shop = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+
+        shop.updateQuality();
+        expect(shop.items[0].sellIn).toEqual(4);
+      });
+
+      it('should update quality decreasing by two if sellIn equal zero', () => {
+        const shop = new Shop([{ name: 'banana', sellIn: 0, quality: 5 }]);
+        shop.updateQuality();
+
+        expect(shop.items[0].quality).toEqual(3);
       });
     });
   });
