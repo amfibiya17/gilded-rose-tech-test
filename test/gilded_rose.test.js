@@ -84,14 +84,38 @@ describe('Gilded Rose', () => {
     });
 
     describe('Sulfuras, Hand of Ragnaros', () => {
-      it('should not update the quality and sellIn of Sulfuras, Hand of Ragnaros', () => {
+      it('should not update quality', () => {
         const shop = new Shop([
           { name: 'Sulfuras, Hand of Ragnaros', sellIn: 0, quality: 80 },
         ]);
         shop.updateQuality();
 
         expect(shop.items[0].quality).toEqual(80);
+      });
+
+      it('should not update sellIn', () => {
+        const shop = new Shop([
+          { name: 'Sulfuras, Hand of Ragnaros', sellIn: 0, quality: 80 },
+        ]);
+        shop.updateQuality();
+
         expect(shop.items[0].sellIn).toEqual(0);
+      });
+    });
+
+    describe('Aged Brie', () => {
+      it('should update quality increasing by 1', () => {
+        const shop = new Shop([{ name: 'Aged Brie', sellIn: 2, quality: 0 }]);
+        shop.updateQuality();
+
+        expect(shop.items[0].quality).toEqual(1);
+      });
+
+      it('should update sellIn decreasing by 1', () => {
+        const shop = new Shop([{ name: 'Aged Brie', sellIn: 2, quality: 0 }]);
+        shop.updateQuality();
+
+        expect(shop.items[0].sellIn).toEqual(1);
       });
     });
   });
