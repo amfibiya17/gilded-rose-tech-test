@@ -6,4 +6,16 @@ describe('Gilded Rose', () => {
     const items = gildedRose.updateQuality();
     expect(items[0].name).toBe('foo');
   });
+
+  describe('class Item', () => {
+    let item;
+
+    beforeEach(() => {
+      item = new Item('banana', 1, 0);
+    });
+
+    it('has a name instance property after initializing the class', () => {
+      expect(item.name).toEqual('banana');
+    });
+  });
 });
