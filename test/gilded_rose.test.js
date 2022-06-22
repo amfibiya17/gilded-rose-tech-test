@@ -161,18 +161,110 @@ describe('Gilded Rose', () => {
         expect(gildedRose.items[0].sellIn).toEqual(0);
       });
 
-      it('should update quality increasing by 2 and decreasing sellIn by 1 for each day that passes beyond the `sellIn` day', () => {
+      it('should increase quality by 2 for each day that passes beyond the `sellIn` day', () => {
+        const gildedRose = new Shop([
+          { name: 'Aged Brie', sellIn: 1, quality: 1 },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(2);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(4);
+      });
+
+      it('should decrease sellIn by 1 for each day that passes beyond the `sellIn` day', () => {
         const gildedRose = new Shop([
           { name: 'Aged Brie', sellIn: 1, quality: 1 },
         ]);
 
         gildedRose.updateQuality();
         expect(gildedRose.items[0].sellIn).toEqual(0);
-        expect(gildedRose.items[0].quality).toEqual(2);
 
         gildedRose.updateQuality();
         expect(gildedRose.items[0].sellIn).toEqual(-1);
-        expect(gildedRose.items[0].quality).toEqual(4);
+      });
+    });
+
+    describe('Backstage passes to a TAFKAL80ETC concert', () => {
+      it('should increase quality by 1 when the sellIn > 10', () => {
+        const gildedRose = new Shop([
+          {
+            name: 'Backstage passes to a TAFKAL80ETC concert',
+            sellIn: 15,
+            quality: 20,
+          },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(21);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(22);
+      });
+
+      it('should decrease sellIn by 1 when the sellIn > 10', () => {
+        const gildedRose = new Shop([
+          {
+            name: 'Backstage passes to a TAFKAL80ETC concert',
+            sellIn: 15,
+            quality: 20,
+          },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(14);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].sellIn).toEqual(13);
+      });
+
+      it('should increase quality by 2 when 5 < sellIn <= 10', () => {
+        const gildedRose = new Shop([
+          {
+            name: 'Backstage passes to a TAFKAL80ETC concert',
+            sellIn: 9,
+            quality: 20,
+          },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(22);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(24);
+      });
+
+      it('should increase quality by 3 when sellIn <= 5', () => {
+        const gildedRose = new Shop([
+          {
+            name: 'Backstage passes to a TAFKAL80ETC concert',
+            sellIn: 5,
+            quality: 20,
+          },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(23);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(26);
+      });
+
+      it('should drop quality to 0 when sellIn < 0', () => {
+        const gildedRose = new Shop([
+          {
+            name: 'Backstage passes to a TAFKAL80ETC concert',
+            sellIn: 0,
+            quality: 20,
+          },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(0);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(0);
       });
     });
   });
