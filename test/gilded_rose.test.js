@@ -26,4 +26,16 @@ describe('Gilded Rose', () => {
       expect(item.quality).toEqual(0);
     });
   });
+
+  describe('class Shop', () => {
+    let shop;
+
+    beforeEach(() => {
+      shop = new Shop(['banana']);
+    });
+
+    it('has items instance property after initializing the class', () => {
+      expect(shop.items).toEqual(['banana']);
+    });
+  });
 });
