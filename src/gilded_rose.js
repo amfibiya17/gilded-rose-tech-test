@@ -1,4 +1,4 @@
-const Item = require('./item');
+const { Item, AgedBrie } = require('./item');
 
 class Shop {
   constructor(items = []) {
@@ -7,6 +7,7 @@ class Shop {
 
   updateQuality() {
     for (let i = 0; i < this.items.length; i += 1) {
+      // this.items[i].update();
       if (
         this.items[i].name !== 'Aged Brie' &&
         this.items[i].name !== 'Backstage passes to a TAFKAL80ETC concert'
