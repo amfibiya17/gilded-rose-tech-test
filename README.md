@@ -80,7 +80,9 @@ Examples:
 
 [x] Create  `Sulfuras` class following TDD 
 
-[] Create  `Backstage passes` class following TDD 
+[x] Create  `BackstagePasses` class following TDD 
+
+[] Create  `BasicItem` class following TDD 
 
 [] Refactor tests
 

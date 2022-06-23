@@ -1,6 +1,6 @@
 const Sulfuras = require('../src/sulfuras');
 
-describe('Aged sulfuras', () => {
+describe('Sulfuras', () => {
   describe('instance properties ', () => {
     let sulfuras;
 
