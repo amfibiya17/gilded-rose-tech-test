@@ -78,7 +78,7 @@ Examples:
 
 [x] Create `AgedBrie` class following TDD 
 
-[] Create  `Sulfuras` class following TDD 
+[x] Create  `Sulfuras` class following TDD 
 
 [] Create  `Backstage passes` class following TDD 
 
