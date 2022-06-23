@@ -82,9 +82,12 @@ Examples:
 
 [x] Create  `BackstagePasses` class following TDD 
 
-[] Create  `BasicItem` class following TDD 
+[x] Create  `BasicItem` class following TDD
 
-[] Refactor tests
+[] Create `ConjuredManaCake` class following TDD
+
+[] Refactor  `Shop` class related tests following TDD
+
 
 ---
 
