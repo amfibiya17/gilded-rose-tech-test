@@ -55,14 +55,15 @@ describe('Aged Brie', () => {
     });
   });
 
-  describe('update when sellIn = -1 and quality = 50', () => {
-    let brie;
-
-    beforeEach(() => {
-      brie = new AgedBrie(-1, 50);
+  describe('update when quality <= 50', () => {
+    it('should not have quality greater than 50', () => {
+      const brie = new AgedBrie(-1, 50);
+      brie.update();
+      expect(brie.quality).toEqual(50);
     });
 
     it('should not have quality greater than 50', () => {
+      const brie = new AgedBrie(3, 50);
       brie.update();
       expect(brie.quality).toEqual(50);
     });

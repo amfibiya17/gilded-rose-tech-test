@@ -86,7 +86,7 @@ Examples:
 
 [x] Create `ConjuredManaCake` class following TDD
 
-[] Refactor  `Shop` class related tests following TDD
+[] Refactor  `Shop` class and related tests following TDD
 
 
 ---
