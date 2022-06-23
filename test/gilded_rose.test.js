@@ -29,15 +29,16 @@ describe('Gilded Rose', () => {
 
   describe('class Shop', () => {
     it('has items instance property after initializing the class', () => {
-      const gildedRose = new Shop([{ name: 'banana', sellIn: 5, quality: 5 }]);
+      const items = [];
+      const gildedRose = new Shop(items);
 
-      expect(gildedRose.items).toEqual([new Item('banana', 5, 5)]);
+      expect(gildedRose.items).toEqual([]);
     });
 
     describe('updateQuality with quality limitation', () => {
       it('should not have negative quality', () => {
         const gildedRose = new Shop([
-          { name: 'banana', sellIn: 5, quality: 0 },
+          { name: 'banana', sellIn: 5, quality: 1 },
         ]);
 
         gildedRose.updateQuality();
@@ -49,14 +50,14 @@ describe('Gilded Rose', () => {
 
       it('should not have quality greater than 50', () => {
         const gildedRose = new Shop([
-          { name: 'banana', sellIn: 5, quality: 49 },
+          { name: 'banana', sellIn: 5, quality: 50 },
         ]);
 
         gildedRose.updateQuality();
-        expect(gildedRose.items[0].quality).toBeLessThanOrEqual(50);
+        expect(gildedRose.items[0].quality).toEqual(49);
 
         gildedRose.updateQuality();
-        expect(gildedRose.items[0].quality).toBeLessThanOrEqual(50);
+        expect(gildedRose.items[0].quality).toEqual(48);
       });
     });
 
@@ -161,7 +162,7 @@ describe('Gilded Rose', () => {
         expect(gildedRose.items[0].sellIn).toEqual(0);
       });
 
-      it('should increase quality by 2 for each day that passes beyond the `sellIn` day', () => {
+      it('should increase quality by 2 for each day if sellIn < 0', () => {
         const gildedRose = new Shop([
           { name: 'Aged Brie', sellIn: 1, quality: 1 },
         ]);
@@ -173,7 +174,7 @@ describe('Gilded Rose', () => {
         expect(gildedRose.items[0].quality).toEqual(4);
       });
 
-      it('should decrease sellIn by 1 for each day that passes beyond the `sellIn` day', () => {
+      it('should decrease sellIn by 1 for each day if sellIn < 0', () => {
         const gildedRose = new Shop([
           { name: 'Aged Brie', sellIn: 1, quality: 1 },
         ]);
@@ -183,6 +184,18 @@ describe('Gilded Rose', () => {
 
         gildedRose.updateQuality();
         expect(gildedRose.items[0].sellIn).toEqual(-1);
+      });
+
+      it('should not have quality greater than 50', () => {
+        const gildedRose = new Shop([
+          { name: 'Aged Brie', sellIn: 11, quality: 49 },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(50);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(50);
       });
     });
 
@@ -265,6 +278,22 @@ describe('Gilded Rose', () => {
 
         gildedRose.updateQuality();
         expect(gildedRose.items[0].quality).toEqual(0);
+      });
+
+      it('should not have quality greater than 50', () => {
+        const gildedRose = new Shop([
+          {
+            name: 'Backstage passes to a TAFKAL80ETC concert',
+            sellIn: 5,
+            quality: 49,
+          },
+        ]);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(50);
+
+        gildedRose.updateQuality();
+        expect(gildedRose.items[0].quality).toEqual(50);
       });
     });
   });
