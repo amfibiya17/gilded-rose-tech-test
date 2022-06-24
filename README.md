@@ -1,8 +1,7 @@
-# Gilded Rose
-
+Gilded Rose
 ==============
 
-$coverage$
+![](https://img.shields.io/badge/Coverage-100%25-83A603.svg?prefix=$coverage$)
 
 This is the Gilded Rose kata in JavaScript with Jest
 
@@ -33,15 +32,15 @@ node
 ---
 
 ## Test Coverage
-
+![Test Coverage](https://i.postimg.cc/66VvzGpR/Screenshot-2022-06-24-at-13-21-22.png)
 
 ---
 
 ## Input/output
 
-Given item `name` with current quality `cQuality` and current sellIn `cSellIn`.  
-When a day passes.  
-Then item has revised quality `rQuality` and revised sellIn `rSellIn` .
+Current quality `cQuality` and current sellIn `cSellIn`.  
+Day pass.  
+Revised quality `rQuality` and revised sellIn `rSellIn` .
 
 Examples:
 
@@ -70,23 +69,23 @@ Examples:
 
 ## Steps approached
 
-[x] Fix eslint  
+- [x] Fix eslint  
 
-[x] Create all possible tests to cover existing spaghetti code following input/output table above: tests for `Non-specific-item`, `Aged Brie`, `Backstage passes`, `Sulfuras Hand of Ragnaros` (coverage 100%). Writing the tests in this form helped me to better understand the requirements.   
+- [x] Create all possible tests to cover existing spaghetti code following input/output table above: tests for `Non-specific-item`, `Aged Brie`, `Backstage passes`, `Sulfuras Hand of Ragnaros` (coverage 100%). Writing the tests in this form helped me to better understand the requirements.   
 
-[x] Separate classes `Item` and `Shop` and tests for them into different files  
+- [x] Separate classes `Item` and `Shop` and tests for them into different files  
 
-[x] Create `AgedBrie` class following TDD 
+- [x] Create `AgedBrie` class following TDD 
 
-[x] Create  `Sulfuras` class following TDD 
+- [x] Create  `Sulfuras` class following TDD 
 
-[x] Create  `BackstagePasses` class following TDD 
+- [x] Create  `BackstagePasses` class following TDD 
 
-[x] Create  `BasicItem` class following TDD
+- [x] Create  `BasicItem` class following TDD
 
-[x] Create `ConjuredManaCake` class following TDD
+- [x] Create `ConjuredManaCake` class following TDD
 
-[] Refactor  `Shop` class and related tests following TDD
+- [x] Refactor  `Shop` class and related tests following TDD
 
 
 ---
