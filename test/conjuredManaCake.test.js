@@ -33,9 +33,10 @@ describe('Conjured Mana Cake', () => {
     });
 
     it('should update quality decreasing by 4 after sellIn <= 0', () => {
-      const cake = new ConjuredManaCake(0, 6);
+      const cake = new ConjuredManaCake(0, 9);
       cake.update();
-      expect(cake.quality).toEqual(2);
+      expect(cake.sellIn).toEqual(-1);
+      expect(cake.quality).toEqual(5);
     });
   });
 });

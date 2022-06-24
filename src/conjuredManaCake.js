@@ -12,7 +12,6 @@ class ConjuredManaCake extends Item {
       this.quality -= 2;
       return;
     }
-
     this.quality -= 4;
   }
 }
